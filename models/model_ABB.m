@@ -45,6 +45,13 @@ SP.J(6).f    = [  0.0     0.0      0.0 ]';
 SP.J(6).rpy  = [  0.0    pi/2      0.0 ]';
 SP.J(6).type = 'R';
 
+% definition of links
+% ----------------------------------------
+for iL = 1:SP.n+1
+  SP.L(iL).m = 1;
+  SP.L(iL).I = eye(3);
+end
+
 % definition of end-effectors
 % ----------------------------------------
 SP.bN = 7;
