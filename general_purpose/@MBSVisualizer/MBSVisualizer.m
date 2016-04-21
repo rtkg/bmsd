@@ -68,8 +68,6 @@ classdef MBSVisualizer
                 set(g,'parent',links(C(i+1)));
             end
             
-            
-            
             %visualize end-effectors
             bN=SP.bN;
             bP=SP.bP;
