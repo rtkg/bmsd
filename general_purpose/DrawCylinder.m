@@ -1,4 +1,4 @@
-function DrawCylinder(pos, az, radius, len, color)
+function hSurface=DrawCylinder(pos, az, radius, len, color)
 % 
 % ------------------------------------------------------
 % | Basic Multibody Simulator Derived (Matlab toolbox) |
@@ -59,14 +59,14 @@ end
 
 %************* draw
 % cylinder
-hSurface = surf(x2+pos(1),y2+pos(2),z2+pos(3));
-set(hSurface,'FaceColor',color);
+hSurface(1) = surf(x2+pos(1),y2+pos(2),z2+pos(3));
+set(hSurface(1),'FaceColor',color);
 
 % top and bottom
 % set to 1 to close the cylinder
 if 0
   for n=1:2
-    patch(x2(n,:)+pos(1),y2(n,:)+pos(2),z2(n,:)+pos(3),cc(n,:));
+    hSurface(2)=patch(x2(n,:)+pos(1),y2(n,:)+pos(2),z2(n,:)+pos(3),cc(n,:));
   end	
 end
 

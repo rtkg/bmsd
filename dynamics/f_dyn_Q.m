@@ -50,7 +50,7 @@ else % for convenience I output y if the input y=[]
        SV.L(1).w;
        SV.q;
        SV.dq];
-end
+ end
 
 SV = calc_pos(SP,SV);
 

@@ -1,4 +1,4 @@
-function draw_frame(varargin)
+function h=draw_frame(varargin)
 %
 % ------------------------------------------------------
 % | Basic Multibody Simulator Derived (Matlab toolbox) |
@@ -12,6 +12,7 @@ function draw_frame(varargin)
 %
 % Syntax:
 % -------
+% draw_frame(R, p, color, scale)
 % draw_frame(R, p, color)
 % draw_frame(R, color)
 % draw_frame(R, p)
@@ -34,26 +35,37 @@ if nargin == 0
   R = eye(3);
   p = [0,0,0]';
   color = 'b';
+  scale = 1;
 elseif nargin == 1
   R = varargin{1};
   p = [0,0,0]';
   color = 'b';
+  scale = 1;
 elseif nargin == 2
   if ischar(varargin{2})
     R = varargin{1};
     p = [0,0,0]';
     color = varargin{2};
+	scale = 1;
   else
     R = varargin{1};
     p = varargin{2};
     p = p(:);
     color = 'b';
+	scale = 1;
   end
 elseif nargin == 3
   R = varargin{1};
   p = varargin{2};
   p = p(:);
   color = varargin{3};
+  scale = 1;
+elseif nargin == 4;
+    R = varargin{1};
+  p = varargin{2};
+  p = p(:);
+  color = varargin{3};
+  scale = varargin{4};
 else
   disp('incorrect input')
 end
@@ -73,19 +85,19 @@ cc = {'b', 'g', 'r'};
 str = ['X' 'Y' 'Z']';
 for i = 1:3
   U(:,1) = p;
-  U(:,2) = p + R(:,i);
-  v = 0.2*R(:,i);
+  U(:,2) = p + R(:,i)*scale;
+  v = 0.2*R(:,i)*scale;
   if color_flag
-    hold on;plot3(U(1,:),U(2,:),U(3,:),color,'LineWidth',2);
+	hold on;h(2*i-1)=plot3(U(1,:),U(2,:),U(3,:),color,'LineWidth',2);
   else
-    hold on;plot3(U(1,:),U(2,:),U(3,:),cc{i},'LineWidth',2);
+    hold on;h(2*i-1)=plot3(U(1,:),U(2,:),U(3,:),cc{i},'LineWidth',2);
   end
-  text(U(1,2)+v(1),U(2,2)+v(2),U(3,2)+v(3),str(i),'FontWeight','bold','FontSize',8)
+  h(2*i)=text(U(1,2)+v(1),U(2,2)+v(2),U(3,2)+v(3),str(i),'FontWeight','bold','FontSize',8*scale);
 end
 
-axis([p(1)-1 p(1)+1 p(2)-1 p(2)+1 p(3)-1 p(3)+1])
-cameratoolbar('NoReset')
-cameratoolbar('SetMode','orbit')
-grid on
+% axis([p(1)-1 p(1)+1 p(2)-1 p(2)+1 p(3)-1 p(3)+1])
+% cameratoolbar('NoReset')
+% cameratoolbar('SetMode','orbit')
+% grid on
 
 %%%EOF
