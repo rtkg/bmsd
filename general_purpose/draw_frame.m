@@ -81,7 +81,7 @@ else
   color_flag = 1;
 end
 
-cc = {'b', 'g', 'r'};
+cc = {'r', 'g', 'b'};
 str = ['X' 'Y' 'Z']';
 for i = 1:3
   U(:,1) = p;
