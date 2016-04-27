@@ -56,7 +56,7 @@ while norm_err > tol && iter <= max_iter
   SV = calc_pos(SP,SV); 
   [pE,RE] = fk_e(SP,SV,bN,bP,bR);
   Je = calc_Je(SP,SV,SP.bN,SP.bP); 
-   
+
   %==============================      
   err(1:3) = gain*(dP - pE);
   

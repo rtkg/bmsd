@@ -10,7 +10,6 @@
 classdef Environment
     
     properties (Access = protected)
-        cf_e_ %environment frame (represented as a hgtransform)
         vis_scale_
         g_
         fn_
@@ -20,6 +19,7 @@ classdef Environment
         h_
         k_e_ %environment stiffness
         c_e_ %environment damping
+        cf_e_ %environment frame (represented as a hgtransform)
     end
     
     methods
