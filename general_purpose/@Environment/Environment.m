@@ -7,7 +7,7 @@
 %
 % The environment plane is defnied by the x/y plane of cf_e_
 %
-classdef Environment
+classdef Environment<handle
     
     properties (Access = protected)
         vis_scale_
